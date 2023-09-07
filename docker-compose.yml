@@ -6,8 +6,8 @@ services:
    ports:
      - 54322:5432
    environment:
-     - POSTGRES_USER=pitthayakorn
-     - POSTGRES_PASSWORD=54322
+     - POSTGRES_USER=${DB_USER}
+     - POSTGRES_PASSWORD=${DB_PASS}
    image: postgres:14.4
    restart: unless-stopped
 
@@ -18,8 +18,8 @@ services:
     - 4433:443
     - 8080:80
   environment:
-    - PGADMIN_DEFAULT_EMAIL=pitthayakorn-p@rmutp.ac.th
-    - PGADMIN_DEFAULT_PASSWORD=54321
+    - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+    - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
   restart: unless-stopped
 
  strapi:
@@ -28,10 +28,10 @@ services:
   ports:
     - 1337:1337
   environment:
-    - DATABASE_CLIENT=postgres
-    - DATABASE_HOST=172.26.29.167
-    - DATABASE_PORT=54322
-    - DATABASE_NAME=strapi
-    - DATABASE_USERNAME=pitthayakorn
-    - DATABASE_PASSWORD=54322
+    - DATABASE_CLIENT=${DA_CLIENT}
+    - DATABASE_HOST=${DA_HOST}
+    - DATABASE_PORT=${DA_PORT}
+    - DATABASE_NAME=${DA_NAME}
+    - DATABASE_USERNAME=${DA_USERNAME}
+    - DATABASE_PASSWORD=${DA_PASSWORD}
   restart: unless-stopped
